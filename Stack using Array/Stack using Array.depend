@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1602960688 source:d:\cc++\codeblock projects\c++\stack using array\main.cpp
+	<iostream>
+	<cstdlib>
+

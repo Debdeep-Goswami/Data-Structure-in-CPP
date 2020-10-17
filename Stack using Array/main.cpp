@@ -9,6 +9,7 @@ class Stack
 
 private :
     int top;
+    int stack_size;
 
 public:
     int data_array[MAX];
@@ -37,7 +38,6 @@ int main()
     cout <<endl;
     return 0;
 }
-
 // _______________________ END of Main Function __________
 
 
@@ -45,23 +45,23 @@ int main()
 
 void Stack::push(int data)
 {
-    if(top==Stack_Size-1)
+    if(top==stack_size-1)
         printf("\nOverflow");
     else
-        data_array[++Top]=data;
+        data_array[++top]=data;
 }
 
-int pop()
+int Stack::pop()
 {
     int data=-999;
     if(top==-1)
         printf("\nUnderflow");
     else
-        data=data_array[Top--];
+        data=data_array[top--];
     return data;
 }
 
-int peek()
+int Stack::peek()
 {
     if(top==-1)
         return -999;
@@ -69,7 +69,7 @@ int peek()
         return data_array[top];
 }
 
-void display_stack()
+void Stack::display_stack()
 {
     int i;
     if(top==-1)
@@ -80,26 +80,26 @@ void display_stack()
 }
 
 
-int menu()
+int Stack::menu()
 {
     int choice;
     printf("\nList of Choices\n");
-    printf("\n Push\t\t\t= 1\n");
-    printf("\n Pop\t\t\t= 2 \n");
-    printf("\n Show Top\t\t= 3\n");
-    printf("\n Display Stack\t\t= 4\n");
-    printf("\n Exit\t\t\t= 0\n");
+    printf("\n Push\t\t\t= 1");
+    printf("\n Pop\t\t\t= 2");
+    printf("\n Show Top\t\t= 3");
+    printf("\n Display Stack\t\t= 4");
+    printf("\n Exit\t\t\t= 0");
     printf("\nEnter your choice = ");
     scanf("%d",&choice);
     return choice;
 }
 
-void run()
+void Stack::run()
 {
     int choice,data;
     printf("\nWelcome to Stack operation program using array\n");
     printf("\nEnter the maximum size of the stack = ");
-    scanf("%d",&Stack_Size);
+    scanf("%d",&stack_size);
 
     while(choice!=0)
     {
@@ -138,6 +138,5 @@ void run()
             printf("\nWrong Choice..Try again\n");
         }
     }
-    return 0;
 }
 /***************  End of Function Definitions  ****************/
