@@ -1,3 +1,7 @@
+/**********************************************
+        Stack using Array
+***********************************************/
+
 #include <iostream>
 #include <cstdlib>
 #define MAX 1000
