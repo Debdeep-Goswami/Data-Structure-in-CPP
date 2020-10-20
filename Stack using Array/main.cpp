@@ -1,9 +1,6 @@
-/**********************************************
-        Stack using Array
-***********************************************/
-
 #include <iostream>
-#include <cstdlib>
+//#include <cstdlib>
+#include <exception>
 #define MAX 1000
 
 using namespace std;
@@ -50,7 +47,7 @@ int main()
 void Stack::push(int data)
 {
     if(top==stack_size-1)
-        printf("\nOverflow");
+        cout<<"\nOverflow";
     else
         data_array[++top]=data;
 }
@@ -59,7 +56,7 @@ int Stack::pop()
 {
     int data=-999;
     if(top==-1)
-        printf("\nUnderflow");
+        cout<<"\nUnderflow";
     else
         data=data_array[top--];
     return data;
@@ -77,10 +74,10 @@ void Stack::display_stack()
 {
     int i;
     if(top==-1)
-        printf("\nStack is Empty\n");
+        cout<<"\nStack is Empty"<<endl;
     else
         for(i=top;i>=0;i--)
-            printf("\n|  %d  |",data_array[i]);
+            cout<<"\n|  "<<data_array[i]<<"  |";
 }
 
 
@@ -94,7 +91,7 @@ int Stack::menu()
     printf("\n Display Stack\t\t= 4");
     printf("\n Exit\t\t\t= 0");
     printf("\nEnter your choice = ");
-    scanf("%d",&choice);
+    cin>>choice;
     return choice;
 }
 
@@ -103,43 +100,61 @@ void Stack::run()
     int choice,data;
     printf("\nWelcome to Stack operation program using array\n");
     printf("\nEnter the maximum size of the stack = ");
-    scanf("%d",&stack_size);
+    try
+    {
+        cin>>stack_size;
+    }
+    catch(...)
+    {
+        cout<<"\nUnexpected Error encountered.";
+        run();
+    }
 
+    if(stack_size<=0)
+        return;
     while(choice!=0)
     {
         choice=menu();
-        switch(choice)
+        try
         {
-        case 0:
-            break;
+            switch(choice)
+            {
+            case 0:
+                break;
 
-        case 1:
-            printf("\nEnter the data = ");
-            scanf("%d",&data);
-            push(data);
-            break;
+            case 1:
+                cout<<"\nEnter the data = ";
+                cin>>data;
+                push(data);
+                break;
 
-        case 2:
-            data=pop();
-            if(data==-999);
-            else
-                printf("\nItem popped = %d\n",data);
-            break;
+            case 2:
+                data=pop();
+                if(data==-999);
+                else
+                    cout<<"\nItem popped = "<<data<<endl;
+                break;
 
-        case 3:
-            data=peek();
-            if(data==-999)
-                printf("\nStack is Empty\n");
-            else
-                printf("\nItem at the top is = %d\n",data);
-            break;
+            case 3:
+                data=peek();
+                if(data==-999)
+                    cout<<"\nStack is Empty\n";
+                else
+                    cout<<"\nItem at the top is = "<<data<<endl;
+                break;
 
-        case 4:
-            display_stack();
-            break;
+            case 4:
+                display_stack();
+                break;
 
-        default:
-            printf("\nWrong Choice..Try again\n");
+            default:
+                cout<<"\nWrong Choice..Try again\n";
+            }
+        }
+        catch(...)
+        {
+            cout<<"\nError from Switch case caught";
+            continue;
         }
     }
 }
