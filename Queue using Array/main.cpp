@@ -44,3 +44,14 @@ int main()
 // _______________________ END of Main Function __________
 
 
+/*****************   Function Definitions  ***************/
+
+void Queue::enqueue(int data)
+{
+    if(top==queue_size-1)
+        printf("\nOverflow");
+    else
+        data_array[++top]=data;
+}
+
+
