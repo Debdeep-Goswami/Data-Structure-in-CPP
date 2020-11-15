@@ -53,5 +53,11 @@ void Queue::enqueue(int data)
     else
         data_array[++top]=data;
 }
+int Queue::dequeue()
+{
+        if(top==-1)
+           printf("\nUnderflow");
+        else
+           return data[top--];
 
-
+}
