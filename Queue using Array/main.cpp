@@ -20,7 +20,7 @@ public:
     int data_array[MAX];
 
     //  Constructor
-    Queue(){front=0;rear=0;}
+    Queue(){front=-1;rear=-1;}
 
     //--------------------- Necessary for Stack Operation -------
     void enqueue(int);
@@ -50,18 +50,22 @@ int main()
 void Queue::enqueue(int data)
 {
     if(rear==queue_size-1)
-        printf("\nOverflow");
+        cout<<"\nOverflow"<<endl;
     else
-        data_array[++top]=data;
+    {
+        if (front==-1)
+            front=0;
+        data_array[++rear]=data;
+    }
 }
 
 int Queue::dequeue()
 {
     int data=-999;
-    if(top==-1)
-        printf("\nUnderflow");
+    if(front==-1 || front>rear)
+        cout<<"\nUnderflow"<<endl;
     else
-        data=data_array[top--];
+        data=data_array[front++];
     return data;
 }
 
