@@ -69,22 +69,14 @@ int Queue::dequeue()
     return data;
 }
 
-int Stack::peek()
+void Queue::display_queue()
 {
-    if(top==-1)
-        return -999;
+    int i=front;
+    if(front==rear)
+        printf("\nQueue is Empty\n");
     else
-        return data_array[top];
-}
-
-void Stack::display_stack()
-{
-    int i;
-    if(top==-1)
-        printf("\nStack is Empty\n");
-    else
-        for(i=top;i>=0;i--)
-            printf("\n|  %d  |",data_array[i]);
+        while(i<rear)
+            printf(" %d ",data_array[i++]);
 }
 
 
